@@ -16,15 +16,11 @@ Plugin 'altercation/vim-colors-solarized'
 
 call vundle#end()
 
+
 "let g:neocomplete#enable_at_startup = 1
 "let g:neocomplete#enable_smart_case = 1
-if exists('$TMUX')
-  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-else
-  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-endif
+let g:netrw_liststyle=3
+
 
 set nu
 syntax on
@@ -40,8 +36,27 @@ set expandtab
 " auto indent
 set autoindent
 set cursorline
-
 " >> or << by 2 spaces
 set shiftwidth=2
 
+
+" change cursor when insert mode
+if exists('$TMUX')
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
+
+" key mapping
+nnoremap <C-b> :YcmCompleter GoTo<CR>
+
+
+
+
 filetype plugin indent on
+
+
+
